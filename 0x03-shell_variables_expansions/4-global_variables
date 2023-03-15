@@ -1,1 +1,2 @@
-#!/bin/bashprintenv
+#!/bin/bash
+printenv
