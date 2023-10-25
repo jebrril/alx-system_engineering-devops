@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
-#configure nginx server to listen for port 80
-#this is spam
-#this is spam
+
+# Configure nginx server to listen on port 80
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+
+# Restart nginx
 service nginx restart
+
+# Check if nginx is listening on port 80
+netstat -tuln | grep ':80 ' > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    echo "Nginx is listening on port 80"
+else
+    echo "Nginx is not listening on port 80"
+fi
